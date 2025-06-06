@@ -1,0 +1,937 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>795</width>
+    <height>627</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="whatsThis">
+   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;bacground-color: red;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background-color: #f5f5f5;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #0f2027, stop:1 #2c5364);
+}
+
+/* Специальный класс для центрального виджета (если нужно) */
+.central-widget {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+/* Коррекция для таблицы */
+QTableWidget {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #1e3c72;
+    border-radius: 8px;
+    gridline-color: #ffffff;
+    color: #ffffff;
+    font-size: 14px;
+    margin: 0;  /* Убираем внешние отступы */
+    padding: 0; /* Убираем внутренние отступы */
+}
+
+/* Фикс для заголовков таблицы */
+QHeaderView::section {
+    padding: 8px 12px; /* Четкие отступы для заголовков */
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #1e3c72, stop:1 #2a5298);
+    color: #ffffff;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Дополнительный фикс для выравнивания */
+QTableCornerButton::section {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #1e3c72, stop:1 #2a5298);
+    border: none;
+}</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QGraphicsView" name="graphicsView">
+        <property name="minimumSize">
+         <size>
+          <width>400</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTableWidget" name="tableWidget">
+        <property name="minimumSize">
+         <size>
+          <width>103</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>1000</width>
+          <height>1000</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QTableWidget {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #1e3c72;
+    border-radius: 8px;
+    gridline-color: #ffffff;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+QTableWidget::item {
+    padding: 6px;
+    border-bottom: 1px solid #ffffff;
+}
+
+QTableWidget::item:selected {
+    background-color: #4a90e2;
+    color: #ffffff;
+}
+
+QHeaderView::section {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #1e3c72, stop:1 #2a5298);
+    color: #ffffff;
+    padding: 10px;
+    border: 1px solid #1e3c72;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+QHeaderView::section:checked {
+    background-color: #4a90e2;
+}
+
+QScrollBar:vertical {
+    border: 1px solid #1e3c72;
+    background: #2a5298;
+    width: 12px;
+    margin: 0px 0px 0px 0px;
+}
+
+QScrollBar::handle:vertical {
+    background: #4a90e2;
+    min-height: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::add-line:vertical {
+    border: 1px solid #1e3c72;
+    background: #2a5298;
+    height: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical {
+    border: 1px solid #1e3c72;
+    background: #2a5298;
+    height: 0px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar:horizontal {
+    border: 1px solid #1e3c72;
+    background: #2a5298;
+    height: 12px;
+    margin: 0px 0px 0px 0px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #4a90e2;
+    min-width: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::add-line:horizontal {
+    border: 1px solid #1e3c72;
+    background: #2a5298;
+    width: 0px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal {
+    border: 1px solid #1e3c72;
+    background: #2a5298;
+    width: 0px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}</string>
+        </property>
+        <row/>
+        <column>
+         <property name="text">
+          <string/>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string/>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string/>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string/>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string/>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string/>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string/>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string/>
+         </property>
+        </column>
+        <item row="0" column="0">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="textAlignment">
+          <set>AlignLeading|AlignBottom</set>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="1" column="0">
+           <widget class="QLabel" name="numberLabel">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>305</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>-1</pointsize>
+              <bold>true</bold>
+              <hintingpreference>PreferFullHinting</hintingpreference>
+             </font>
+            </property>
+            <property name="mouseTracking">
+             <bool>false</bool>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LayoutDirection::RightToLeft</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #1e3c72;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    padding: 1px;
+    selection-background-color: #4a90e2;
+    selection-color: #ffffff;
+}
+
+QLabel:focus {
+    border: 2px solid #4a90e2;
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #2a5298, stop:1 #1e3c72);
+}
+
+QLabel:disabled {
+    background-color: #cccccc;
+    border: 2px solid #999999;
+    color: #666666;
+}</string>
+            </property>
+            <property name="text">
+             <string>Название колонки:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>-1</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #1e3c72;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    padding: 1px;
+    selection-background-color: #4a90e2;
+    selection-color: #ffffff;
+}
+QLabel:focus {
+    border: 2px solid #4a90e2;
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #2a5298, stop:1 #1e3c72);
+}
+
+QLabel:disabled {
+    background-color: #cccccc;
+    border: 2px solid #999999;
+    color: #666666;
+}</string>
+            </property>
+            <property name="text">
+             <string>Фильтр по годам:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="regionLabel">
+            <property name="maximumSize">
+             <size>
+              <width>500</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>-1</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #1e3c72;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    padding: 1px;
+    selection-background-color: #4a90e2;
+    selection-color: #ffffff;
+}
+
+QLabel:focus {
+    border: 2px solid #4a90e2;
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #2a5298, stop:1 #1e3c72);
+}
+
+QLabel:disabled {
+    background-color: #cccccc;
+    border: 2px solid #999999;
+    color: #666666;
+}</string>
+            </property>
+            <property name="text">
+             <string>Фильтр по региону:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="3">
+           <spacer name="horizontalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="2">
+           <widget class="QComboBox" name="columnComboBox">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>150</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QComboBox {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #1e3c72;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 30px 5px 10px; /* Увеличили правый отступ для стрелки */
+    margin: 5px;
+    min-width: 100px;
+}
+
+QComboBox:hover {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #2a5298, stop:1 #1e3c72);
+    border: 2px solid #4a90e2;
+}
+
+/* Стиль выпадающего списка */
+QComboBox QAbstractItemView {
+    background-color: #2a5298;
+    border: 2px solid #1e3c72;
+    selection-background-color: #4a90e2;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 5px;
+}
+
+/* Стрелка выпадающего списка */
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 25px; /* Ширина области стрелки */
+    border-left: 1px solid #1e3c72;
+    border-top-right-radius: 8px; /* Скругление правого угла */
+    border-bottom-right-radius: 8px;
+}
+
+/* Иконка стрелки */
+QComboBox::down-arrow {
+    image: none; /* Убираем стандартную иконку */
+}
+
+QComboBox::down-arrow:on { /* Когда список раскрыт */
+    image: url(:/icons/arrow_up_white.png); /* Стрелка вверх */
+}
+
+/* Состояния */
+QComboBox:disabled {
+    background-color: #cccccc;
+    border: 2px solid #999999;
+    color: #666666;
+}
+
+QComboBox:on { /* Когда список раскрыт */
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #2a5298, stop:1 #1e3c72);
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="0" colspan="4">
+           <widget class="QPushButton" name="metricsPushButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto Slab</family>
+              <pointsize>-1</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #1e3c72;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 1px 10px;
+    margin: 5px;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #2a5298, stop:1 #1e3c72);
+    border: 2px solid #4a90e2;
+    color: #ffffff;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #4a90e2;
+    color: #ffffff;
+    padding: 1px 18px;
+}
+
+QPushButton:disabled {
+    background-color: #cccccc;
+    border: 2px solid #999999;
+    color: #666666;
+}
+</string>
+            </property>
+            <property name="text">
+             <string>Расчитать метрики и отрисовать график</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QComboBox" name="regionComboBox">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>150</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QComboBox {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #1e3c72;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 30px 5px 10px; /* Увеличили правый отступ для стрелки */
+    margin: 5px;
+    min-width: 100px;
+}
+
+QComboBox:hover {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #2a5298, stop:1 #1e3c72);
+    border: 2px solid #4a90e2;
+}
+
+/* Стиль выпадающего списка */
+QComboBox QAbstractItemView {
+    background-color: #2a5298;
+    border: 2px solid #1e3c72;
+    selection-background-color: #4a90e2;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 5px;
+}
+
+/* Стрелка выпадающего списка */
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 25px; /* Ширина области стрелки */
+    border-left: 1px solid #1e3c72;
+    border-top-right-radius: 8px; /* Скругление правого угла */
+    border-bottom-right-radius: 8px;
+}
+
+/* Иконка стрелки */
+QComboBox::down-arrow {
+    image: url(:/icons/arrow_down_white.png); /* Ваша белая стрелка */
+    width: 12px;
+    height: 12px;
+}
+
+QComboBox::down-arrow:on { /* Когда список раскрыт */
+    image: url(:/icons/arrow_up_white.png); /* Стрелка вверх */
+}
+
+/* Состояния */
+QComboBox:disabled {
+    background-color: #cccccc;
+    border: 2px solid #999999;
+    color: #666666;
+}
+
+QComboBox:on { /* Когда список раскрыт */
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #2a5298, stop:1 #1e3c72);
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="3">
+           <widget class="QSpinBox" name="maxYearSpinBox">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>150</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QSpinBox {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #1e3c72;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 1px 25px 1px 10px;  /* Увеличено правое padding для стрелочек */
+    margin: 5px;
+}
+
+QSpinBox:hover {
+    border: 2px solid #4a90e2;
+}
+</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1" colspan="2">
+           <widget class="QSpinBox" name="minYearSpinBox">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>150</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QSpinBox {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #1e3c72;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 1px 25px 1px 10px;  /* Увеличено правое padding для стрелочек */
+    margin: 5px;
+}
+
+QSpinBox:hover {
+    border: 2px solid #4a90e2;
+}
+</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="2" column="0" colspan="2">
+           <widget class="QPushButton" name="exitButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto Slab</family>
+              <pointsize>-1</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #1e3c72;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 1px 10px;
+    margin: 5px;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #2a5298, stop:1 #1e3c72);
+    border: 2px solid #4a90e2;
+    color: #ffffff;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #4a90e2;
+    color: #ffffff;
+    padding: 1px 18px;
+}
+
+QPushButton:disabled {
+    background-color: #cccccc;
+    border: 2px solid #999999;
+    color: #666666;
+}
+
+</string>
+            </property>
+            <property name="text">
+             <string>Выход</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="uploadPushButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto Slab</family>
+              <pointsize>-1</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #1e3c72;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 1px 10px;
+    margin: 5px;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #2a5298, stop:1 #1e3c72);
+    border: 2px solid #4a90e2;
+    color: #ffffff;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #4a90e2;
+    color: #ffffff;
+    padding: 1px 18px;
+}
+
+QPushButton:disabled {
+    background-color: #cccccc;
+    border: 2px solid #999999;
+    color: #666666;
+}
+</string>
+            </property>
+            <property name="text">
+             <string>Загрузить данные</string>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="pathLabel">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>-1</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #1e3c72;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    padding: 1px;
+    selection-background-color: #4a90e2;
+    selection-color: #ffffff;
+}
+
+QLabel:focus {
+    border: 2px solid #4a90e2;
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #2a5298, stop:1 #1e3c72);
+}
+
+QLabel:disabled {
+    background-color: #cccccc;
+    border: 2px solid #999999;
+    color: #666666;
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="filePushButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto Slab</family>
+              <pointsize>-1</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #1e3c72;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 1px 10px;
+    margin: 5px;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #2a5298, stop:1 #1e3c72);
+    border: 2px solid #4a90e2;
+    color: #ffffff;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+    border: 2px solid #4a90e2;
+    color: #ffffff;
+    padding: 1px 18px;
+}
+
+QPushButton:disabled {
+    background-color: #cccccc;
+    border: 2px solid #999999;
+    color: #666666;
+}
+</string>
+            </property>
+            <property name="text">
+             <string>Выберите файл</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
